@@ -36,7 +36,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Rajdhani', sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.5;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
@@ -49,7 +49,7 @@ body {
   background: var(--bg);
   position: relative;
   overflow: hidden;
-  padding: 14mm 14mm 12mm 14mm;
+  padding: 10mm 14mm 7mm 14mm;
 }
 
 @media screen {
@@ -135,7 +135,7 @@ body {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 3px;
-  padding: 10px 12px;
+  padding: 7px 12px;
 }
 
 .panel-green {
@@ -223,7 +223,7 @@ body {
   grid-template-columns: 1fr auto;
   align-items: start;
   gap: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .p1-name-block {}
@@ -297,7 +297,7 @@ body {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 /* EXPERIENCE SECTION */
@@ -305,7 +305,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .section-title {
@@ -326,13 +326,13 @@ body {
   background: var(--surface);
   border-radius: 2px;
   overflow: hidden;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .exp-header {
   background: rgba(0,255,136,0.06);
   border-bottom: 1px solid rgba(0,255,136,0.15);
-  padding: 7px 10px;
+  padding: 5px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -340,7 +340,7 @@ body {
 
 .exp-role {
   font-family: 'Oxanium', sans-serif;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   color: var(--text);
 }
@@ -356,18 +356,18 @@ body {
   font-family: 'JetBrains Mono', monospace;
   font-size: 9px;
   color: var(--cyan);
-  padding: 4px 10px 0;
+  padding: 3px 10px 0;
 }
 
-.exp-body { padding: 6px 10px 8px; }
+.exp-body { padding: 4px 10px 6px; }
 
 .bullet {
   display: flex;
   gap: 7px;
-  margin-bottom: 4px;
-  font-size: 11.5px;
+  margin-bottom: 3px;
+  font-size: 10.75px;
   color: var(--text-dim);
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .bullet::before {
@@ -385,17 +385,17 @@ body {
 .skills-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  margin-top: 6px;
+  gap: 3px;
+  margin-top: 4px;
 }
 
 .skill-item {
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 2px;
-  padding: 5px 8px;
+  padding: 3px 7px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9.5px;
+  font-size: 9px;
   color: var(--text-dim);
   display: flex;
   align-items: center;
@@ -415,7 +415,7 @@ body {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 2px;
-  padding: 8px 10px;
+  padding: 6px 10px;
 }
 
 .edu-degree {
@@ -450,7 +450,7 @@ body {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 2px;
-  padding: 8px 10px;
+  padding: 6px 10px;
   text-align: center;
 }
 
@@ -865,8 +865,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 8px;
-  padding-top: 6px;
+  margin-top: 5px;
+  padding-top: 4px;
   border-top: 1px solid var(--border);
 }
 
@@ -954,18 +954,19 @@ body {
     </div>
   </div>
 
-  <div class="neon-line"></div>
+  <div class="neon-line" style="margin-bottom:7px;"></div>
 
   <!-- Summary -->
-  <div class="p1-summary">
+  <div class="p1-summary" style="padding:8px 14px;margin-bottom:7px;">
     Final-year CS undergraduate at UBIT specializing in <strong>Autonomous Agentic Workflows</strong> and <strong>Scalable AI Infrastructure</strong>.
-    Proven track record as a Technical Founder — independently deploying end-to-end e-commerce ecosystems and architecting
-    <strong>self-correcting RL loops</strong> at production scale. Expert in the business of AI: engineering production-grade,
-    discriminator-validated systems with <strong>measurable outcomes</strong>. Not a student — a builder of autonomous worlds.
+    Designs and operates a live production stack of autonomous agents spanning content generation, multi-platform distribution,
+    and customer operations — not academic demos, systems running unattended against real schedules and real customers.
+    Technical Founder experience architecting <strong>self-correcting RL loops</strong> and
+    <strong>discriminator-validated generation pipelines</strong> with measurable outcomes.
   </div>
 
   <!-- Aggregate Metrics -->
-  <div class="metrics-strip">
+  <div class="metrics-strip" style="margin-bottom:6px;">
     <div class="metric-card green-accent">
       <div class="metric"><div class="metric-value" style="font-size:22px;">95.8%</div><div class="metric-label">Agent Success Rate</div></div>
     </div>
@@ -1002,7 +1003,7 @@ body {
         </div>
       </div>
 
-      <div style="margin-bottom:6px;">
+      <div style="margin-bottom:4px;">
         <div class="section-header">
           <div class="dot cyan"></div>
           <div class="section-title" style="font-size:13px;">FLAGSHIP PROJECT I: VISUAL ENGINE v9</div>
@@ -1061,6 +1062,7 @@ body {
           <div class="skills-grid">
             <div class="skill-item">Python (Adv.)</div>
             <div class="skill-item">Node.js</div>
+            <div class="skill-item">React</div>
             <div class="skill-item">PHP</div>
             <div class="skill-item">SQL</div>
             <div class="skill-item">WordPress Arch.</div>
@@ -1074,6 +1076,8 @@ body {
             <div class="skill-item">Data Pipelines</div>
             <div class="skill-item">HITL Design</div>
             <div class="skill-item">Node Maintenance</div>
+            <div class="skill-item">Playwright / Browser Automation</div>
+            <div class="skill-item">Batch &amp; Queue Orchestration</div>
           </div>
         </div>
       </div>
@@ -1103,30 +1107,30 @@ body {
       <!-- Readiness Score Panel -->
       <div class="panel panel-green">
         <div class="label label-green" style="margin-bottom:6px;">// SYSTEM READINESS MATRIX</div>
-        <div style="margin-bottom:5px;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
-            <span style="font-size:10px;color:var(--text-dim);">Agentic Systems</span>
+        <div style="margin-bottom:3px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:1px;">
+            <span style="font-size:9.5px;color:var(--text-dim);">Agentic Systems</span>
             <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);">98%</span>
           </div>
           <div class="progress-bar"><div class="progress-fill" style="width:98%"></div></div>
         </div>
-        <div style="margin-bottom:5px;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
-            <span style="font-size:10px;color:var(--text-dim);">Data Pipeline Architecture</span>
+        <div style="margin-bottom:3px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:1px;">
+            <span style="font-size:9.5px;color:var(--text-dim);">Data Pipeline Architecture</span>
             <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);">95%</span>
           </div>
           <div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div>
         </div>
-        <div style="margin-bottom:5px;">
-          <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
-            <span style="font-size:10px;color:var(--text-dim);">Production Deployment</span>
+        <div style="margin-bottom:3px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:1px;">
+            <span style="font-size:9.5px;color:var(--text-dim);">Production Deployment</span>
             <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--cyan);">91%</span>
           </div>
           <div class="progress-bar"><div class="progress-fill" style="width:91%;background:linear-gradient(90deg,var(--cyan),var(--green));"></div></div>
         </div>
         <div>
-          <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
-            <span style="font-size:10px;color:var(--text-dim);">Cost Optimization Engineering</span>
+          <div style="display:flex;justify-content:space-between;margin-bottom:1px;">
+            <span style="font-size:9.5px;color:var(--text-dim);">Cost Optimization Engineering</span>
             <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--orange);">97%</span>
           </div>
           <div class="progress-bar"><div class="progress-fill" style="width:97%;background:linear-gradient(90deg,var(--orange),#ffaa00);"></div></div>
@@ -1139,7 +1143,7 @@ body {
     <div class="footer-classification">◈ TECHNICAL DOSSIER · CONFIDENTIAL · 2026</div>
     <div class="footer-page" style="display:flex;gap:16px;">
       <span>youzii2004@gmail.com</span>
-      <span style="color:var(--green);">PAGE 01 / 03</span>
+      <span style="color:var(--green);">PAGE 01 / 05</span>
     </div>
   </div>
 </div>
@@ -1273,7 +1277,7 @@ body {
     <div class="footer-classification">◈ VISUAL ENGINE v9 · AUTONOMOUS SYNTHESIS SYSTEM · UBIT/2026</div>
     <div class="footer-page" style="display:flex;gap:16px;">
       <span>Muhammad Usaid Siddiqui</span>
-      <span style="color:var(--cyan);">PAGE 02 / 03</span>
+      <span style="color:var(--cyan);">PAGE 02 / 05</span>
     </div>
   </div>
 </div>
@@ -1429,7 +1433,136 @@ body {
     <div class="footer-classification">◈ VIDLENS · SEMANTIC DISTILLATION ENGINE · CLASSIFIED TECHNICAL DOSSIER</div>
     <div class="footer-page" style="display:flex;gap:16px;">
       <span>Muhammad Usaid Siddiqui · UBIT · Karachi</span>
-      <span style="color:var(--orange);">PAGE 03 / 03</span>
+      <span style="color:var(--orange);">PAGE 03 / 05</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 4: PRODUCTION SYSTEMS ==================== -->
+<div class="page">
+
+  <div class="p3-header">
+    <div class="p3-eyebrow">
+      <span class="dot"></span>
+      <span class="label" style="color:var(--green);letter-spacing:0.15em;">◈ OPERATED INFRASTRUCTURE · BEYOND THE FLAGSHIPS</span>
+    </div>
+    <div class="p3-title">PRODUCTION <span style="color:var(--green);">SYSTEMS</span></div>
+    <div class="p3-tagline">Live, Session-Driven, Metric-Tracked · Running Unattended Against Real Schedules &amp; Real Customers</div>
+  </div>
+
+  <div class="neon-line" style="margin-bottom:8px;"></div>
+
+  <div class="arch-nodes" style="gap:8px;">
+
+    <div class="arch-node">
+      <div class="arch-node-id">01</div>
+      <div class="arch-node-content">
+        <div class="arch-node-title" style="color:var(--green);">Browser-Automation Content Scheduler</div>
+        <div class="arch-node-desc">Playwright-driven publishing agent built after a vendor's Graph API silently died; schedules and posts daily content across <span style="color:var(--green);font-weight:600;">three credential-isolated business accounts</span> with zero manual steps.</div>
+      </div>
+    </div>
+
+    <div class="arch-node">
+      <div class="arch-node-id">02</div>
+      <div class="arch-node-content">
+        <div class="arch-node-title" style="color:var(--cyan);">Autonomous Marketing / Decision Agent</div>
+        <div class="arch-node-desc">Agent that ideates and scores revenue actions against a persistent, reason-tracked idea ledger — each initiative explicitly marked validated, killed, or parked — and automatically retires outreach angles that underperform against live reply-rate data rather than running on schedule alone.</div>
+      </div>
+    </div>
+
+    <div class="arch-node">
+      <div class="arch-node-id">03</div>
+      <div class="arch-node-content">
+        <div class="arch-node-title" style="color:var(--orange);">Self-Correcting Vision-QA Generation Loop</div>
+        <div class="arch-node-desc">Prompt-orchestrated pipeline chaining image generation → HTML/CSS compositing → headless render → vision-model critique, iterating within a bounded retry budget until output passes a quality gate. Proves the self-correcting agentic-critique pattern is repeatable, not a one-off.</div>
+      </div>
+    </div>
+
+    <div class="arch-node">
+      <div class="arch-node-id">04</div>
+      <div class="arch-node-content">
+        <div class="arch-node-title" style="color:var(--green);">Multi-Platform Batch Distribution</div>
+        <div class="arch-node-desc">Quota-aware batch pipelines distributing hundreds of queued video assets across three platforms, with per-run cost tracking and a <span style="color:var(--green);font-weight:600;">295-item production queue completed at 0% failure</span>.</div>
+      </div>
+    </div>
+
+    <div class="arch-node">
+      <div class="arch-node-id">05</div>
+      <div class="arch-node-content">
+        <div class="arch-node-title" style="color:var(--cyan);">React-Based Programmatic Render Engine</div>
+        <div class="arch-node-desc">React/Remotion engine producing typed, parameterised MP4 compositions, consumed as a shared platform capability by <span style="color:var(--cyan);font-weight:600;">four downstream production systems</span> — not a one-off render script.</div>
+      </div>
+    </div>
+
+    <div class="arch-node">
+      <div class="arch-node-id">06</div>
+      <div class="arch-node-content">
+        <div class="arch-node-title" style="color:var(--orange);">Customer-Messaging Automation with CRM State Tracking</div>
+        <div class="arch-node-desc">Messaging system tracking <span style="color:var(--orange);font-weight:600;">111 customer relationships</span> across two CRMs, drafting tone-matched, two-step outreach that adapts to each live conversation thread.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="dossier-footer">
+    <div class="footer-classification">◈ PRODUCTION SYSTEMS · OPERATED INFRASTRUCTURE · UBIT/2026</div>
+    <div class="footer-page" style="display:flex;gap:16px;">
+      <span>Muhammad Usaid Siddiqui · UBIT · Karachi</span>
+      <span style="color:var(--green);">PAGE 04 / 05</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 5: ACADEMIC PROJECTS — LIVE DEMOS ==================== -->
+<div class="page">
+
+  <div class="p3-header">
+    <div class="p3-eyebrow">
+      <span class="dot cyan"></span>
+      <span class="label" style="color:var(--cyan);letter-spacing:0.15em;">◈ COURSEWORK, SHIPPED · BSCS 301 · UNIVERSITY OF KARACHI</span>
+    </div>
+    <div class="p3-title">ACADEMIC <span style="color:var(--cyan);">PROJECTS</span></div>
+    <div class="p3-tagline">Live Demos · Algorithms Implemented End-to-End With a Working Front-End, Not Just Pseudocode</div>
+  </div>
+
+  <div class="neon-line" style="background:linear-gradient(90deg,var(--cyan),var(--green));margin-bottom:8px;"></div>
+
+  <div class="arch-nodes" style="gap:10px;">
+
+    <div class="arch-node">
+      <div class="arch-node-id" style="color:var(--cyan);">01</div>
+      <div class="arch-node-content">
+        <div class="arch-node-title" style="color:var(--cyan);">Travel Route Planner <span style="color:var(--text-muted);font-weight:400;">· Dijkstra's Shortest Path</span></div>
+        <div class="arch-node-desc">Interactive shortest-route finder between US cities on a real map (Leaflet.js), animating every node visit and edge relaxation step of the algorithm.</div>
+        <div style="margin-top:5px;"><a href="https://travelplanner-dld.netlify.app/" target="_blank" style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);letter-spacing:0.05em;">▸ travelplanner-dld.netlify.app</a></div>
+      </div>
+    </div>
+
+    <div class="arch-node">
+      <div class="arch-node-id" style="color:var(--cyan);">02</div>
+      <div class="arch-node-content">
+        <div class="arch-node-title" style="color:var(--cyan);">File Zipper <span style="color:var(--text-muted);font-weight:400;">· Huffman Encoding</span></div>
+        <div class="arch-node-desc">Lossless text compression in the browser — builds and visualises the Huffman tree, shows bit-level codes and compression ratio, and decodes back to verify integrity.</div>
+        <div style="margin-top:5px;"><a href="https://filezipper.netlify.app/" target="_blank" style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);letter-spacing:0.05em;">▸ filezipper.netlify.app</a></div>
+      </div>
+    </div>
+
+    <div class="arch-node">
+      <div class="arch-node-id" style="color:var(--cyan);">03</div>
+      <div class="arch-node-content">
+        <div class="arch-node-title" style="color:var(--cyan);">Crossword Puzzle Generator <span style="color:var(--text-muted);font-weight:400;">· Backtracking / CSP</span></div>
+        <div class="arch-node-desc">Playable crossword generated by recursive backtracking with constraint satisfaction, including a full algorithm trace, keyboard navigation and answer checking.</div>
+        <div style="margin-top:5px;"><a href="https://crossworldpuzzle.netlify.app/" target="_blank" style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);letter-spacing:0.05em;">▸ crossworldpuzzle.netlify.app</a></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="dossier-footer">
+    <div class="footer-classification">◈ ACADEMIC PROJECTS · LIVE DEMOS · UBIT/2026</div>
+    <div class="footer-page" style="display:flex;gap:16px;">
+      <span>Muhammad Usaid Siddiqui · UBIT · Karachi</span>
+      <span style="color:var(--cyan);">PAGE 05 / 05</span>
     </div>
   </div>
 </div>
