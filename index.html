@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Usaid Siddiqui — Technical Dossier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&family=Oxanium:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===================== RESET & BASE ===================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #020209;
+  --surface:    #0a0a14;
+  --surface2:   #0f0f1e;
+  --border:     #1c1c30;
+  --border2:    #252540;
+  --green:      #00ff88;
+  --green-dim:  rgba(0,255,136,0.12);
+  --green-glow: rgba(0,255,136,0.35);
+  --cyan:       #00d4ff;
+  --cyan-dim:   rgba(0,212,255,0.10);
+  --orange:     #ff6b00;
+  --orange-dim: rgba(255,107,0,0.12);
+  --red:        #ff2d55;
+  --text:       #e8e8f0;
+  --text-muted: #5a5a78;
+  --text-dim:   #8888aa;
+  --page-w:     210mm;
+  --page-h:     297mm;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ===================== PAGE SYSTEM ===================== */
+.page {
+  width: var(--page-w);
+  min-height: var(--page-h);
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  padding: 14mm 14mm 12mm 14mm;
+}
+
+@media screen {
+  .page {
+    margin: 0 auto 24px;
+    box-shadow: 0 0 80px rgba(0,255,136,0.08), 0 0 0 1px var(--border);
+  }
+}
+
+@media print {
+  body { background: var(--bg); }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0;
+    page-break-after: always;
+    box-shadow: none;
+  }
+  .page:last-child { page-break-after: avoid; }
+}
+
+/* ===================== GRID BACKGROUND ===================== */
+.page::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,255,136,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,136,0.025) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Corner marks */
+.page::after {
+  content: '';
+  position: absolute;
+  top: 8mm; left: 8mm; right: 8mm; bottom: 8mm;
+  border: 1px solid rgba(0,255,136,0.06);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page > * { position: relative; z-index: 1; }
+
+/* ===================== TYPOGRAPHY ===================== */
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+.font-display { font-family: 'Bebas Neue', sans-serif; }
+.font-oxanium { font-family: 'Oxanium', sans-serif; }
+
+/* ===================== COMPONENTS ===================== */
+.label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.label-green { color: var(--green); }
+.label-cyan  { color: var(--cyan); }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 2px;
+  padding: 2px 7px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+
+.tag.green { border-color: rgba(0,255,136,0.4); color: var(--green); background: var(--green-dim); }
+.tag.cyan  { border-color: rgba(0,212,255,0.4); color: var(--cyan);  background: var(--cyan-dim);  }
+.tag.orange{ border-color: rgba(255,107,0,0.4); color: var(--orange);background: var(--orange-dim);}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 10px 12px;
+}
+
+.panel-green {
+  background: var(--green-dim);
+  border-color: rgba(0,255,136,0.3);
+}
+
+.panel-cyan {
+  background: var(--cyan-dim);
+  border-color: rgba(0,212,255,0.25);
+}
+
+.panel-orange {
+  background: var(--orange-dim);
+  border-color: rgba(255,107,0,0.3);
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, var(--green) 0%, rgba(0,255,136,0.1) 60%, transparent 100%);
+  margin: 8px 0;
+}
+
+.divider-cyan {
+  background: linear-gradient(90deg, var(--cyan) 0%, rgba(0,212,255,0.1) 60%, transparent 100%);
+}
+
+/* ===================== METRIC BLOCK ===================== */
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.metric-value {
+  font-family: 'Oxanium', sans-serif;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+}
+
+.metric-value.cyan   { color: var(--cyan); }
+.metric-value.orange { color: var(--orange); }
+.metric-value.white  { color: var(--text); }
+
+.metric-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ===================== NEON LINE ===================== */
+.neon-line {
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), var(--cyan));
+  box-shadow: 0 0 10px var(--green-glow);
+  margin-bottom: 10px;
+}
+
+.neon-line.orange {
+  background: linear-gradient(90deg, var(--orange), #ffaa00);
+  box-shadow: 0 0 10px rgba(255,107,0,0.4);
+}
+
+/* ===================== STATUS DOT ===================== */
+.dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+}
+
+.dot.orange { background: var(--orange); box-shadow: 0 0 6px var(--orange); }
+.dot.cyan   { background: var(--cyan);   box-shadow: 0 0 6px var(--cyan);   }
+
+/* ========================= PAGE 1 ========================= */
+
+/* P1 HEADER */
+.p1-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.p1-name-block {}
+
+.p1-serial {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--green);
+  letter-spacing: 0.15em;
+  margin-bottom: 4px;
+}
+
+.p1-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  line-height: 0.88;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+.p1-name span {
+  color: var(--green);
+  text-shadow: 0 0 30px var(--green-glow);
+}
+
+.p1-title {
+  font-family: 'Oxanium', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--cyan);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+.p1-contact-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  padding-top: 8px;
+}
+
+.p1-contact-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.p1-contact-item span { color: var(--green); margin-right: 5px; }
+
+/* P1 SUMMARY */
+.p1-summary {
+  background: linear-gradient(135deg, var(--surface) 0%, rgba(0,212,255,0.05) 100%);
+  border: 1px solid var(--border2);
+  border-left: 3px solid var(--cyan);
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.p1-summary strong { color: var(--cyan); font-weight: 600; }
+
+/* P1 MAIN GRID */
+.p1-main {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* EXPERIENCE SECTION */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: var(--text);
+}
+
+.section-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.exp-block {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.exp-header {
+  background: rgba(0,255,136,0.06);
+  border-bottom: 1px solid rgba(0,255,136,0.15);
+  padding: 7px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exp-role {
+  font-family: 'Oxanium', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.exp-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: var(--green);
+  letter-spacing: 0.05em;
+}
+
+.exp-company {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--cyan);
+  padding: 4px 10px 0;
+}
+
+.exp-body { padding: 6px 10px 8px; }
+
+.bullet {
+  display: flex;
+  gap: 7px;
+  margin-bottom: 4px;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+.bullet::before {
+  content: '▸';
+  color: var(--green);
+  font-size: 10px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* RIGHT COLUMN */
+.p1-right { display: flex; flex-direction: column; gap: 10px; }
+
+/* Skills Matrix */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.skill-item {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 5px 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.skill-item::before {
+  content: '';
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--green);
+  flex-shrink: 0;
+}
+
+/* Education */
+.edu-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 8px 10px;
+}
+
+.edu-degree {
+  font-family: 'Oxanium', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.edu-inst {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  color: var(--cyan);
+  margin: 2px 0;
+}
+
+.edu-meta {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* Metrics Strip */
+.metrics-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.metric-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.metric-card.green-accent { border-top: 2px solid var(--green); }
+.metric-card.cyan-accent  { border-top: 2px solid var(--cyan);  }
+.metric-card.orange-accent{ border-top: 2px solid var(--orange);}
+.metric-card.red-accent   { border-top: 2px solid var(--red);   }
+
+/* P1 FOOTER */
+.p1-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.p1-footer-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+/* ========================= PAGE 2 ========================= */
+.p2-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: start;
+  margin-bottom: 10px;
+}
+
+.p2-badge {
+  background: var(--green-dim);
+  border: 1px solid rgba(0,255,136,0.4);
+  border-radius: 2px;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.p2-badge-ver {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+}
+
+.p2-badge-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-top: 3px;
+}
+
+.p2-title-block {}
+
+.p2-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  line-height: 0.9;
+  color: var(--text);
+  letter-spacing: 0.03em;
+}
+
+.p2-title span { color: var(--green); }
+
+.p2-subtitle {
+  font-family: 'Oxanium', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--cyan);
+  letter-spacing: 0.2em;
+  margin-top: 5px;
+}
+
+/* Metrics Row */
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.metric-mini {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 6px 8px;
+  text-align: center;
+}
+
+.metric-mini-val {
+  font-family: 'Oxanium', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.metric-mini-lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Architecture layout */
+.arch-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Image container */
+.project-image-wrap {
+  border: 1px solid var(--border2);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  background: var(--surface);
+}
+
+.project-image-wrap img {
+  width: 100%;
+  display: block;
+}
+
+.image-overlay-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  padding: 16px 10px 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: var(--green);
+  letter-spacing: 0.1em;
+}
+
+/* Arch nodes */
+.arch-nodes { display: flex; flex-direction: column; gap: 6px; }
+
+.arch-node {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 7px 10px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.arch-node-id {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--green);
+  flex-shrink: 0;
+  min-width: 24px;
+}
+
+.arch-node-content {}
+
+.arch-node-title {
+  font-family: 'Oxanium', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.arch-node-desc {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  margin-top: 1px;
+  line-height: 1.4;
+}
+
+/* Bottom grid */
+.p2-bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.spec-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 8px 10px;
+}
+
+.spec-title {
+  font-family: 'Oxanium', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  font-size: 10.5px;
+}
+
+.spec-item-key { color: var(--text-muted); }
+.spec-item-val { color: var(--green); font-family: 'JetBrains Mono', monospace; font-size: 9.5px; }
+.spec-item-val.cyan   { color: var(--cyan); }
+.spec-item-val.orange { color: var(--orange); }
+
+/* ========================= PAGE 3 ========================= */
+.p3-header {
+  margin-bottom: 10px;
+}
+
+.p3-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.p3-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  line-height: 0.88;
+  color: var(--text);
+}
+
+.p3-title span { color: var(--cyan); }
+
+.p3-tagline {
+  font-family: 'Oxanium', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.p3-metrics-bar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  margin-bottom: 10px;
+  padding: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+}
+
+.p3-metric {
+  text-align: center;
+  padding: 6px 0;
+  border-right: 1px solid var(--border);
+}
+
+.p3-metric:last-child { border-right: none; }
+
+.p3-metric-val {
+  font-family: 'Oxanium', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.p3-metric-lbl {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.p3-body {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.pipeline-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.pipeline-stage {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 7px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pipeline-stage::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+}
+
+.pipeline-stage.stage-green::before { background: var(--green); }
+.pipeline-stage.stage-cyan::before  { background: var(--cyan);  }
+.pipeline-stage.stage-orange::before{ background: var(--orange);}
+.pipeline-stage.stage-red::before   { background: var(--red);   }
+
+.pipeline-stage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.pipeline-stage-name {
+  font-family: 'Oxanium', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.pipeline-stage-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  padding: 1px 6px;
+  border-radius: 1px;
+  background: var(--green-dim);
+  color: var(--green);
+  border: 1px solid rgba(0,255,136,0.3);
+}
+
+.pipeline-stage-badge.cyan {
+  background: var(--cyan-dim);
+  color: var(--cyan);
+  border-color: rgba(0,212,255,0.3);
+}
+
+.pipeline-stage-badge.orange {
+  background: var(--orange-dim);
+  color: var(--orange);
+  border-color: rgba(255,107,0,0.3);
+}
+
+.pipeline-stage-desc {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.p3-right-col { display: flex; flex-direction: column; gap: 8px; }
+
+/* JSON display */
+.json-block {
+  background: #050510;
+  border: 1px solid rgba(0,255,136,0.2);
+  border-radius: 2px;
+  padding: 8px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  line-height: 1.7;
+  color: #888;
+  overflow: hidden;
+}
+
+.json-key   { color: var(--cyan);   }
+.json-str   { color: #a8ff78;      }
+.json-num   { color: var(--orange); }
+.json-punct { color: #555;         }
+
+/* Bottom Section */
+.p3-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+/* Cost formula */
+.formula-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 8px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.formula-highlight {
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Footer bar */
+.dossier-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-classification {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: var(--green);
+  letter-spacing: 0.15em;
+}
+
+.footer-page {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  color: var(--text-muted);
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 3px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), var(--cyan));
+  border-radius: 2px;
+}
+
+/* Separator arrow */
+.arrow-connector {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--green);
+  margin: 1px 0;
+}
+
+/* ===== SCREEN-ONLY TITLE ===== */
+@media screen {
+  body { padding: 20px 0; }
+  .screen-title {
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+}
+
+@media print {
+  .screen-title { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="screen-title">TECHNICAL DOSSIER — MUHAMMAD USAID SIDDIQUI — </div>
+
+<!-- ==================== PAGE 1: IDENTITY & PROFILE ==================== -->
+<div class="page">
+
+  <div class="p1-header">
+    <div class="p1-name-block">
+      <div class="p1-serial font-mono">◈ DOSSIER-001 · AI SYSTEMS ARCHITECT · UBIT/KHI-2026</div>
+      <div class="p1-name">MUHAMMAD<br><span>USAID</span> SIDDIQUI</div>
+      <div class="p1-title">AI Systems Engineer &nbsp;·&nbsp; Technical Founder &nbsp;·&nbsp; Agentic Infrastructure</div>
+    </div>
+    <div class="p1-contact-block">
+      <div class="label" style="margin-bottom:4px;">CONTACT CREDENTIALS</div>
+      <div class="p1-contact-item"><span>✉</span> youzii2004@gmail.com</div>
+      <div class="p1-contact-item"><span>☎</span> +92-335-1825561</div>
+      <div class="p1-contact-item"><span>⌁</span> linkedin.com/in/usaidhere29</div>
+      <div class="p1-contact-item"><span>◈</span> github.com/youzii2004-tech</div>
+      <div class="p1-contact-item"><span>◉</span> Karachi, Pakistan</div>
+      <div style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;">
+        <span class="tag green">AVAILABLE</span>
+        <span class="tag cyan">UK VENTURE</span>
+        <span class="tag orange">FOUNDER</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="neon-line"></div>
+
+  <!-- Summary -->
+  <div class="p1-summary">
+    Final-year CS undergraduate at UBIT specializing in <strong>Autonomous Agentic Workflows</strong> and <strong>Scalable AI Infrastructure</strong>.
+    Proven track record as a Technical Founder — independently deploying end-to-end e-commerce ecosystems and architecting
+    <strong>self-correcting RL loops</strong> at production scale. Expert in the business of AI: engineering production-grade,
+    discriminator-validated systems with <strong>measurable outcomes</strong>. Not a student — a builder of autonomous worlds.
+  </div>
+
+  <!-- Aggregate Metrics -->
+  <div class="metrics-strip">
+    <div class="metric-card green-accent">
+      <div class="metric"><div class="metric-value" style="font-size:22px;">95.8%</div><div class="metric-label">Agent Success Rate</div></div>
+    </div>
+    <div class="metric-card cyan-accent">
+      <div class="metric"><div class="metric-value cyan" style="font-size:22px;">8.73</div><div class="metric-label">Discriminator Score /10</div></div>
+    </div>
+    <div class="metric-card orange-accent">
+      <div class="metric"><div class="metric-value orange" style="font-size:22px;">543+</div><div class="metric-label">Assets Processed</div></div>
+    </div>
+    <div class="metric-card green-accent">
+      <div class="metric"><div class="metric-value" style="font-size:22px;">$0.035</div><div class="metric-label">Avg Cost Per Asset</div></div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="p1-main">
+    <!-- LEFT: Experience -->
+    <div>
+      <div class="section-header">
+        <div class="dot"></div>
+        <div class="section-title">OPERATIONAL EXPERIENCE</div>
+        <div class="section-number">[001]</div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-header">
+          <div class="exp-role">Technical Founder &amp; Systems Administrator</div>
+          <div class="exp-date">OCT 2024 → PRESENT</div>
+        </div>
+        <div class="exp-company">▸ Stealth E-Commerce Venture · UK Ltd. · Distributed Infrastructure</div>
+        <div class="exp-body">
+          <div class="bullet">Architected full-stack infrastructure for a UK-registered digital venture; directed server-side operations, database optimization, and multi-node administration across distributed systems.</div>
+          <div class="bullet">Engineered Python-based automation bots for high-volume asset rendering, cutting manual production overhead by <span style="color:var(--green);font-weight:600;">80%</span> and eliminating single points of failure end-to-end.</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:6px;">
+        <div class="section-header">
+          <div class="dot cyan"></div>
+          <div class="section-title" style="font-size:13px;">FLAGSHIP PROJECT I: VISUAL ENGINE v9</div>
+        </div>
+        <div class="exp-block">
+          <div class="exp-header" style="background:rgba(0,212,255,0.05);border-color:rgba(0,212,255,0.15);">
+            <div class="exp-role" style="font-size:10px;">Autonomous Design Synthesis Agent · Dual-Agent RL Architecture</div>
+            <div style="display:flex;gap:4px;"><span class="tag cyan">Python</span><span class="tag">Knowledge Base</span><span class="tag green">Physics Params</span></div>
+          </div>
+          <div class="exp-body">
+            <div class="bullet">Engineered an autonomous production agent accepting visual sketches and executing end-to-end high-fidelity synthesis — validated at a <span style="color:var(--green);">95.8% success rate</span> across 24 production runs.</div>
+            <div class="bullet">Implemented Supervisor / Discriminator dual-agent loop with Persistent Knowledge Base for iterative self-correction; achieved discriminator score of <span style="color:var(--cyan);">8.73/10</span> via physics-based parameters (tension, flat-lay, wind, drape).</div>
+            <div class="bullet">Built Supervisor Orchestrator managing multi-turn planning and state persistence — enabling fully autonomous iterative learning with <span style="color:var(--orange);">zero manual intervention</span> between runs.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-header">
+          <div class="dot orange"></div>
+          <div class="section-title" style="font-size:13px;">FLAGSHIP PROJECT II: VIDLENS</div>
+        </div>
+        <div class="exp-block">
+          <div class="exp-header" style="background:rgba(255,107,0,0.05);border-color:rgba(255,107,0,0.2);">
+            <div class="exp-role" style="font-size:10px;">Multi-modal Metadata Distillation Pipeline · Semantic Vector Engine</div>
+            <div style="display:flex;gap:4px;"><span class="tag orange">Python</span><span class="tag">Batch Processing</span><span class="tag green">JSON Vectorization</span></div>
+          </div>
+          <div class="exp-body">
+            <div class="bullet">Architected a high-throughput pipeline converting GBs of raw video into structured, vectorizable JSON metadata — reducing data footprint by <span style="color:var(--orange);">&gt;95%</span> across entire asset libraries.</div>
+            <div class="bullet">Managed batch processing for <span style="color:var(--green);">543+ assets</span> across <span style="color:var(--cyan);">272 categories</span> with real-time token tracking; achieved average per-asset cost of <span style="color:var(--orange);">$0.035</span> via heuristic batch logic.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Skills + Education -->
+    <div class="p1-right">
+      <div>
+        <div class="section-header">
+          <div class="dot cyan"></div>
+          <div class="section-title">CAPABILITY MATRIX</div>
+        </div>
+        <div style="margin-bottom:6px;">
+          <div class="label label-green" style="margin-bottom:4px;">// AI &amp; AGENTS</div>
+          <div class="skills-grid">
+            <div class="skill-item">Autonomous Agents</div>
+            <div class="skill-item">RL Loops</div>
+            <div class="skill-item">Agentic Workflows</div>
+            <div class="skill-item">Prompt Engineering</div>
+            <div class="skill-item">Knowledge Base</div>
+            <div class="skill-item">Discriminator AI</div>
+          </div>
+        </div>
+        <div style="margin-bottom:6px;">
+          <div class="label label-cyan" style="margin-bottom:4px;">// CORE ENGINEERING</div>
+          <div class="skills-grid">
+            <div class="skill-item">Python (Adv.)</div>
+            <div class="skill-item">Node.js</div>
+            <div class="skill-item">PHP</div>
+            <div class="skill-item">SQL</div>
+            <div class="skill-item">WordPress Arch.</div>
+            <div class="skill-item">API Security</div>
+          </div>
+        </div>
+        <div>
+          <div class="label" style="margin-bottom:4px;color:var(--orange);">// SYSTEMS &amp; OPS</div>
+          <div class="skills-grid">
+            <div class="skill-item">Cloud Admin</div>
+            <div class="skill-item">Data Pipelines</div>
+            <div class="skill-item">HITL Design</div>
+            <div class="skill-item">Node Maintenance</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-header">
+          <div class="dot"></div>
+          <div class="section-title">EDUCATION</div>
+        </div>
+        <div class="edu-block" style="margin-bottom:6px;">
+          <div class="edu-degree">BS Computer Science</div>
+          <div class="edu-inst">University of Karachi · UBIT</div>
+          <div class="edu-meta">
+            <span class="tag green">Expected Dec 2026</span>
+            <span class="tag">Final Year</span>
+          </div>
+        </div>
+        <div class="edu-block">
+          <div class="edu-degree">HSC Pre-Engineering</div>
+          <div class="edu-inst">Board of Intermediate Education, Karachi</div>
+          <div class="edu-meta">
+            <span class="tag cyan">87.45%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Readiness Score Panel -->
+      <div class="panel panel-green">
+        <div class="label label-green" style="margin-bottom:6px;">// SYSTEM READINESS MATRIX</div>
+        <div style="margin-bottom:5px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
+            <span style="font-size:10px;color:var(--text-dim);">Agentic Systems</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);">98%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:98%"></div></div>
+        </div>
+        <div style="margin-bottom:5px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
+            <span style="font-size:10px;color:var(--text-dim);">Data Pipeline Architecture</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--green);">95%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div>
+        </div>
+        <div style="margin-bottom:5px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
+            <span style="font-size:10px;color:var(--text-dim);">Production Deployment</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--cyan);">91%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:91%;background:linear-gradient(90deg,var(--cyan),var(--green));"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:2px;">
+            <span style="font-size:10px;color:var(--text-dim);">Cost Optimization Engineering</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--orange);">97%</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:97%;background:linear-gradient(90deg,var(--orange),#ffaa00);"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dossier-footer">
+    <div class="footer-classification">◈ TECHNICAL DOSSIER · CONFIDENTIAL · 2026</div>
+    <div class="footer-page" style="display:flex;gap:16px;">
+      <span>youzii2004@gmail.com</span>
+      <span style="color:var(--green);">PAGE 01 / 03</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 2: VISUAL ENGINE v9 ==================== -->
+<div class="page">
+
+  <div class="p2-header">
+    <div class="p2-badge">
+      <div class="p2-badge-ver">v9</div>
+      <div class="p2-badge-label">ITERATION</div>
+    </div>
+    <div class="p2-title-block">
+      <div class="label label-green" style="margin-bottom:3px;">◈ FLAGSHIP PROJECT I · AUTONOMOUS DESIGN SYNTHESIS</div>
+      <div class="p2-title">VISUAL <span>ENGINE</span></div>
+      <div class="p2-subtitle">Supervisor / Discriminator · Dual-Agent Reinforcement Learning Loop · Persistent Knowledge Base</div>
+    </div>
+  </div>
+
+  <div class="neon-line" style="margin-bottom:8px;"></div>
+
+  <!-- Metrics Row -->
+  <div class="metrics-row">
+    <div class="metric-mini" style="border-top:2px solid var(--green);">
+      <div class="metric-mini-val" style="color:var(--green);">95.8%</div>
+      <div class="metric-mini-lbl">Success Rate</div>
+    </div>
+    <div class="metric-mini" style="border-top:2px solid var(--cyan);">
+      <div class="metric-mini-val" style="color:var(--cyan);">8.73</div>
+      <div class="metric-mini-lbl">Avg Score /10</div>
+    </div>
+    <div class="metric-mini" style="border-top:2px solid var(--orange);">
+      <div class="metric-mini-val" style="color:var(--orange);">24</div>
+      <div class="metric-mini-lbl">Total Runs</div>
+    </div>
+    <div class="metric-mini" style="border-top:2px solid var(--green);">
+      <div class="metric-mini-val" style="color:var(--green);">51</div>
+      <div class="metric-mini-lbl">Cortex Size</div>
+    </div>
+    <div class="metric-mini" style="border-top:2px solid var(--cyan);">
+      <div class="metric-mini-val" style="color:var(--cyan);">$2.82</div>
+      <div class="metric-mini-lbl">Lifetime API</div>
+    </div>
+    <div class="metric-mini" style="border-top:2px solid var(--orange);">
+      <div class="metric-mini-val" style="color:var(--orange);">51</div>
+      <div class="metric-mini-lbl">Live Scenarios</div>
+    </div>
+  </div>
+
+  <!-- Architecture Deep Dive -->
+  <div class="arch-grid">
+    <!-- Image -->
+    <div>
+      <div class="label label-cyan" style="margin-bottom:5px;">// LIVE SYSTEM TELEMETRY · v9 PRODUCTION DASHBOARD</div>
+      <div class="project-image-wrap">
+        <img src="https://res.cloudinary.com/dshvqcb5v/image/upload/v1775324178/v9_updated_cv_pvsjr4.jpg" 
+       alt="Visual Engine v9 Architecture Dashboard" 
+       class="project-screenshot">
+       <div class="image-overlay-label">▸ VIUSALENGINE · 95.8% SUCCESS RATE · 8.73/10 AVG · PROD 2026</div>
+            </div>
+    </div>
+
+    <!-- Architecture Nodes -->
+    <div>
+      <div class="label label-green" style="margin-bottom:5px;">// SYSTEM ARCHITECTURE · AGENT TOPOLOGY</div>
+      <div class="arch-nodes">
+        <div class="arch-node">
+          <div class="arch-node-id">01</div>
+          <div class="arch-node-content">
+            <div class="arch-node-title" style="color:var(--cyan);">THE SUPERVISOR · System Orchestration Layer</div>
+            <div class="arch-node-desc">State-aware agent orchestrator managing multi-turn planning and state persistence. Initializes generation state from a pre-loaded Cortex (size: 51) — the semantic vector space used for recursive loops. Zero manual intervention between runs.</div>
+          </div>
+        </div>
+        <div class="arrow-connector">↓ dispatches to ↓</div>
+        <div class="arch-node">
+          <div class="arch-node-id">02</div>
+          <div class="arch-node-content">
+            <div class="arch-node-title" style="color:var(--green);">MULTI-AGENT GENERATION LAYER</div>
+            <div class="arch-node-desc">Dual sub-agent generation executing visual synthesis from sketch input. Brain-agent handles creative synthesis; state-agent manages context continuity. Produces high-fidelity renders at scale.</div>
+          </div>
+        </div>
+        <div class="arrow-connector">↓ validated by ↓</div>
+        <div class="arch-node">
+          <div class="arch-node-id">03</div>
+          <div class="arch-node-content">
+            <div class="arch-node-title" style="color:var(--orange);">THE DISCRIMINATOR · Validation &amp; Audit Loop</div>
+            <div class="arch-node-desc">Dual-role agent performing aesthetic classification + physics validation. Evaluates tension, flat-lay, wind, drape parameters. Drives self-correcting RL feedback loop. Score threshold controls autonomous retry triggers.</div>
+          </div>
+        </div>
+        <div class="arrow-connector">↓ persists to ↓</div>
+        <div class="arch-node">
+          <div class="arch-node-id">04</div>
+          <div class="arch-node-content">
+            <div class="arch-node-title" style="color:var(--green);">KNOWLEDGE BASE · Long-Term Memory Persistence</div>
+            <div class="arch-node-desc">Successful runs codified into persistent Discovery objects — upgrades KB Version to 4.0-massive-expansion. "Pending Discoveries" accumulate until threshold met, enabling continuous autonomous learning.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Spec Grid -->
+  <div class="p2-bottom">
+    <div class="spec-block">
+      <div class="spec-title">Physics Validation Params</div>
+      <div class="spec-item"><span class="spec-item-key">Tension</span><span class="spec-item-val">avg 9.1 (n=2)</span></div>
+      <div class="spec-item"><span class="spec-item-key">Flat-lay</span><span class="spec-item-val">avg 9.0 (n=16)</span></div>
+      <div class="spec-item"><span class="spec-item-key">Wind</span><span class="spec-item-val cyan">avg 8.6 (n=1)</span></div>
+      <div class="spec-item"><span class="spec-item-key">Drape</span><span class="spec-item-val orange">avg 8.8 (n=1)</span></div>
+      <div class="spec-item"><span class="spec-item-key">Overall Score</span><span class="spec-item-val" style="color:var(--green);font-size:12px;font-weight:700;">8.73 / 10</span></div>
+    </div>
+    <div class="spec-block">
+      <div class="spec-title">Financial &amp; API Metrics</div>
+      <div class="spec-item"><span class="spec-item-key">Session Spend</span><span class="spec-item-val">$0.000</span></div>
+      <div class="spec-item"><span class="spec-item-key">Lifetime Spend</span><span class="spec-item-val orange">$2.822</span></div>
+      <div class="spec-item"><span class="spec-item-key">Today Spend</span><span class="spec-item-val">$0.000</span></div>
+      <div class="spec-item"><span class="spec-item-key">Total Runs</span><span class="spec-item-val cyan">24</span></div>
+      <div class="spec-item"><span class="spec-item-key">Avg Cost/Run</span><span class="spec-item-val">~$0.118</span></div>
+    </div>
+    <div class="spec-block">
+      <div class="spec-title">Infrastructure Stack</div>
+      <div class="spec-item"><span class="spec-item-key">Model</span><span class="spec-item-val">Gemini 3.0 Pro</span></div>
+      <div class="spec-item"><span class="spec-item-key">Framework</span><span class="spec-item-val cyan">Python · Streamlit</span></div>
+      <div class="spec-item"><span class="spec-item-key">Agent Pattern</span><span class="spec-item-val">Supervisor/Disc.</span></div>
+      <div class="spec-item"><span class="spec-item-key">HITL Layer</span><span class="spec-item-val orange">Active</span></div>
+      <div class="spec-item"><span class="spec-item-key">Deployment</span><span class="spec-item-val" style="color:var(--green);">Production</span></div>
+    </div>
+  </div>
+
+  <div class="dossier-footer">
+    <div class="footer-classification">◈ VISUAL ENGINE v9 · AUTONOMOUS SYNTHESIS SYSTEM · UBIT/2026</div>
+    <div class="footer-page" style="display:flex;gap:16px;">
+      <span>Muhammad Usaid Siddiqui</span>
+      <span style="color:var(--cyan);">PAGE 02 / 03</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 3: VIDLENS ==================== -->
+<div class="page">
+
+  <div class="p3-header">
+    <div class="p3-eyebrow">
+      <span class="dot orange"></span>
+      <span class="label" style="color:var(--orange);letter-spacing:0.15em;">◈ FLAGSHIP PROJECT II · SEMANTIC DISTILLATION PIPELINE</span>
+    </div>
+    <div class="p3-title">VID<span>LENS</span></div>
+    <div class="p3-tagline">High-Throughput Multi-Modal Metadata Distillation · Vector Intelligence Engine · Token-Optimized RAG Pre-Processor</div>
+  </div>
+
+  <div class="neon-line orange" style="margin-bottom:8px;"></div>
+
+  <!-- Stats Bar -->
+  <div class="p3-metrics-bar">
+    <div class="p3-metric">
+      <div class="p3-metric-val" style="color:var(--orange);">543</div>
+      <div class="p3-metric-lbl">Videos Processed</div>
+    </div>
+    <div class="p3-metric">
+      <div class="p3-metric-val" style="color:var(--cyan);">272</div>
+      <div class="p3-metric-lbl">Categories</div>
+    </div>
+    <div class="p3-metric">
+      <div class="p3-metric-val" style="color:var(--green);">$0.035</div>
+      <div class="p3-metric-lbl">Avg Cost/Asset</div>
+    </div>
+    <div class="p3-metric">
+      <div class="p3-metric-val" style="color:var(--orange);">6.7M+</div>
+      <div class="p3-metric-lbl">Input Tokens</div>
+    </div>
+    <div class="p3-metric" style="border-right:none;">
+      <div class="p3-metric-val" style="color:var(--cyan);">1.1M+</div>
+      <div class="p3-metric-lbl">Output Tokens</div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="p3-body">
+    <!-- LEFT: Pipeline Flow -->
+    <div>
+      <div class="label label-orange" style="margin-bottom:6px;">// DISTILLATION PIPELINE · STAGE ARCHITECTURE</div>
+      <div class="pipeline-flow">
+        <div class="pipeline-stage stage-orange">
+          <div class="pipeline-stage-header">
+            <div class="pipeline-stage-name">STAGE 01 · INPUT INGESTION</div>
+            <div class="pipeline-stage-badge orange">MP4 / MOV / AVI / MKV / WEBM</div>
+          </div>
+          <div class="pipeline-stage-desc">Raw video files drop into the single/batch ingestion interface. Drag-drop or file-select. Heuristic batch logic queues assets intelligently — managing memory and API rate constraints while maintaining throughput at extreme scale.</div>
+        </div>
+
+        <div class="arrow-connector">▼</div>
+
+        <div class="pipeline-stage stage-cyan">
+          <div class="pipeline-stage-header">
+            <div class="pipeline-stage-name">STAGE 02 · LLM SEMANTIC EXTRACTION</div>
+            <div class="pipeline-stage-badge cyan">Gemini Vision API</div>
+          </div>
+          <div class="pipeline-stage-desc">Each asset processed by Gemini's multimodal LLM — extracting narrative arc (Opening / Middle / Climax), realism score, subject matter, and category tags. The bottleneck of high-cost video-to-LLM workflows is resolved via heuristic batch scheduling.</div>
+        </div>
+
+        <div class="arrow-connector">▼</div>
+
+        <div class="pipeline-stage stage-green">
+          <div class="pipeline-stage-header">
+            <div class="pipeline-stage-name">STAGE 03 · JSON DISTILLATION SCHEMA</div>
+            <div class="pipeline-stage-badge">Creative Fingerprint Output</div>
+          </div>
+          <div class="pipeline-stage-desc">Structured JSON output encodes vectorizable narrative intelligence: narrative_extraction fields become semantic nodes for vector search. GBs of raw MP4 data reduced to KBs of Vectorizable Intelligence — &gt;95% footprint reduction, 100% context retention.</div>
+        </div>
+
+        <div class="arrow-connector">▼</div>
+
+        <div class="pipeline-stage stage-green">
+          <div class="pipeline-stage-header">
+            <div class="pipeline-stage-name">STAGE 04 · VECTOR SEARCH INDEXING</div>
+            <div class="pipeline-stage-badge">RAG-Ready Output</div>
+          </div>
+          <div class="pipeline-stage-desc">Distilled JSON enables cost-effective semantic indexing of entire asset libraries at minimal cost. Token parsimony maintained at $0.035/asset — an order of magnitude more efficient than raw video processing workflows.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Image + JSON -->
+    <div class="p3-right-col">
+      <div>
+        <div class="label label-cyan" style="margin-bottom:5px;">// SYSTEM TELEMETRY · PRODUCTION AUDIT DASHBOARD</div>
+        <div class="project-image-wrap">
+          <img src="https://res.cloudinary.com/dshvqcb5v/image/upload/v1775324178/vidlens_final_cv_abjglj.jpg" 
+       alt="VIDLENS Production Dashboard" 
+       class="project-screenshot">
+                 <div class="image-overlay-label">▸ VIDLENS · 543 ASSETS · $19.51 TOTAL · PROD 2026</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="label label-green" style="margin-bottom:5px;">// SAMPLE DISTILLATION OUTPUT · JSON SCHEMA</div>
+        <div class="json-block">
+<span class="json-punct">&#123;</span>
+  <span class="json-key">"narrative_extraction"</span><span class="json-punct">: &#123;</span>
+    <span class="json-key">"Opening"</span><span class="json-punct">: </span><span class="json-str">"Outlined flower embroidery on water canvas"</span><span class="json-punct">,</span>
+    <span class="json-key">"Middle"</span><span class="json-punct">: </span><span class="json-str">"Colors transform: grey/pale → vibrant blues+pinks"</span><span class="json-punct">,</span>
+    <span class="json-key">"Climax"</span><span class="json-punct">: </span><span class="json-str">"Full saturation reveal + thread completion"</span>
+  <span class="json-punct">&#125;,</span>
+  <span class="json-key">"realism_score"</span><span class="json-punct">: </span><span class="json-num">9.5</span><span class="json-punct">,</span>
+  <span class="json-key">"category"</span><span class="json-punct">: </span><span class="json-str">"AI, DIY &amp; Crafts"</span><span class="json-punct">,</span>
+  <span class="json-key">"asset_id"</span><span class="json-punct">: </span><span class="json-str">"48_water_painting_embroidery_202604"</span><span class="json-punct">,</span>
+  <span class="json-key">"vector_ready"</span><span class="json-punct">: </span><span class="json-num">true</span>
+<span class="json-punct">&#125;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Grid -->
+  <div class="p3-bottom">
+    <div class="spec-block">
+      <div class="spec-title">Cost Engineering</div>
+      <div class="formula-block" style="margin-top:4px;">
+<span style="color:var(--text-muted);">Total Spend</span>     <span class="formula-highlight">$19.51</span>
+<span style="color:var(--text-muted);">Assets Processed</span>  <span style="color:var(--green);">543+</span>
+<span style="color:var(--text-muted);">────────────────────</span>
+<span style="color:var(--text-muted);">Cost Per Asset</span>   <span class="formula-highlight">$0.035</span>
+<span style="color:var(--text-muted);">Input Tokens</span>    <span style="color:var(--cyan);">6,724,058</span>
+<span style="color:var(--text-muted);">Output Tokens</span>   <span style="color:var(--cyan);">1,111,220</span>
+      </div>
+    </div>
+    <div class="spec-block">
+      <div class="spec-title">System Configuration</div>
+      <div class="spec-item"><span class="spec-item-key">Framework</span><span class="spec-item-val">Python / PyQt5</span></div>
+      <div class="spec-item"><span class="spec-item-key">Model</span><span class="spec-item-val cyan">Gemini 2.5 Pro</span></div>
+      <div class="spec-item"><span class="spec-item-key">Batch Mode</span><span class="spec-item-val">Heuristic Logic</span></div>
+      <div class="spec-item"><span class="spec-item-key">Output Format</span><span class="spec-item-val orange">Structured JSON</span></div>
+      <div class="spec-item"><span class="spec-item-key">Security</span><span class="spec-item-val">Local Credential</span></div>
+      <div class="spec-item"><span class="spec-item-key">Status</span><span class="spec-item-val" style="color:var(--green);">Production</span></div>
+    </div>
+    <div class="spec-block">
+      <div class="spec-title">Efficiency Outcomes</div>
+      <div class="spec-item"><span class="spec-item-key">Data Reduction</span><span class="spec-item-val orange">&gt;95%</span></div>
+      <div class="spec-item"><span class="spec-item-key">Context Retention</span><span class="spec-item-val">100%</span></div>
+      <div class="spec-item"><span class="spec-item-key">Vector Ready</span><span class="spec-item-val cyan">All Assets</span></div>
+      <div class="spec-item"><span class="spec-item-key">Categories</span><span class="spec-item-val">272</span></div>
+      <div class="spec-item"><span class="spec-item-key">Success Rate</span><span class="spec-item-val" style="color:var(--green);">26/26 batches</span></div>
+    </div>
+  </div>
+
+  <div class="dossier-footer">
+    <div class="footer-classification">◈ VIDLENS · SEMANTIC DISTILLATION ENGINE · CLASSIFIED TECHNICAL DOSSIER</div>
+    <div class="footer-page" style="display:flex;gap:16px;">
+      <span>Muhammad Usaid Siddiqui · UBIT · Karachi</span>
+      <span style="color:var(--orange);">PAGE 03 / 03</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
